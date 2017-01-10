@@ -1,4 +1,6 @@
 class StorefrontController < ApplicationController
+	before_action :authenticate_user!
+	
   def all_items
   	@products = Product.all
   end
