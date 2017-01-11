@@ -2,7 +2,7 @@ class CartController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:add_to_cart, :view_order]
   def add_to_cart
-	  line_item = LineItem.create(product_id: params[:product_id], quantity: params[:quantity]
+	  line_item = LineItem.create(product_id: params[:product_id], quantity: params[:quantity])
 
 	  line_item.line_item_total = line_item.quantity * line_item.product.price
 	  line_item.save
@@ -24,7 +24,7 @@ class CartController < ApplicationController
 	  end
 
 	  @order.sales_tax = @order.subtotal * 0.07
-	  @order.grand_total = @order.subtotal + @order.salex_tax
+	  @order.grand_total = @order.subtotal + @order.sales_tax
 	  @order.save
 
 	  @line_items.each do |line_item|
