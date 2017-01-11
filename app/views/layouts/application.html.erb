@@ -11,14 +11,21 @@
 
   <body>
     <% if user_signed_in? %>
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <%= link_to "My Store", root_path, class: "navbar-brand" %>
           </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-              <li>Extra Link</li>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <% @categories.each do |cat| %>
+                    <li><%= link_to cat.name, categorical_path(cat_id: cat.id) %></li>
+                  <% end %>
+                </ul>
+              </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
@@ -28,18 +35,19 @@
         </div>
       </nav>
       <% else %>
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <%= link_to "My Store", root_path, class: "navbar-brand" %>
+           <%= link_to "My Store", root_path, class: "navbar-brand" %>
           </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
-              <li><%= link_to "Forgot Password", new_user_password_path %></li>
-            </ul>
+          <div id="navbar" class="navbar-collapse collapse">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                <li><%= link_to "Forgot Password", new_user_password_path %></li>
+              </ul>
+            </div>
           </div>
-        </div>
       </nav>
     <% end %>
   	<div class="container">
