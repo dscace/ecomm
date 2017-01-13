@@ -16,7 +16,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-h1 {
+h1, h2, h3, h4 {
 	text-align: center;
 	font-family: 'Bungee Shade', cursive;
 }
@@ -25,7 +25,7 @@ body {
   background-image: url(<%= asset_path 'paper.png' %>);
 }
 
-p, li, a {
+p, li, a, h5, h6 {
 	font-family: 'Open Sans', sans-serif;
 
 }
@@ -36,5 +36,22 @@ p, li, a {
 }
 
 #same_height {
-	height: 370px;
+	height: 300px;
+}
+
+#footer {
+    position : absolute;
+    bottom : 0;
+    height : 80px;
+   }
+
+.add {
+	float: left;
+	background: transparent !important;
+}
+
+span.badge {
+	float: left;
+	margin-top: 15px;
+	margin-left: -10px;
 }

@@ -10,8 +10,15 @@
       </p>
 			<p><%= number_to_currency product.price %></p>
       <h4><%= link_to product.name, product %></h4>
-			<p><%= product.description %></p>
       <p>Made by: <%= product.brand %></p>
+      <div id="footer">
+      <p>
+        <%= form_tag add_to_cart_path do %>
+          <%= hidden_field_tag :product_id, product.id %>
+          <%= submit_tag "Add to Cart", class: "btn btn-primary bottombutton" %>
+        <% end %>
+        </p>
+      </div>
 		</div>
 	</div>
 	<!-- Modal -->
@@ -23,18 +30,8 @@
         <h4 class="modal-title" id="myModalLabel"><%= product.name %></h4>
       </div>
       <div class="modal-body">
-        <p><%= product.price %></p>
+        <p><%= number_to_currency product.price %></p>
         <p><%= product.description %></p>
-      </div>
-      <div class="modal-footer">
-  <!-- Delete those "Save Changes" and "Close" buttons that were here -->
-        <p>
-        <%= form_tag add_to_cart_path do %>
-          <%= hidden_field_tag :product_id, product.id %>
-          <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
-          <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
-        <% end %>
-        </p>
       </div>
     </div>
   </div>
