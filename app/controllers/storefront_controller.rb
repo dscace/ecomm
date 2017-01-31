@@ -1,5 +1,5 @@
 class StorefrontController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:all_items]
 
   def all_items
   	@products = Product.all

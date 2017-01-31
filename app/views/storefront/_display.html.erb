@@ -12,11 +12,11 @@
       <h4><%= link_to product.name, product %></h4>
       <p>Made by: <%= product.brand %></p>
       <div id="footer">
-      <p>
-        <%= form_tag add_to_cart_path do %>
-          <%= hidden_field_tag :product_id, product.id %>
-          <%= submit_tag "Add to Cart", class: "btn btn-primary bottombutton" %>
-        <% end %>
+        <p>
+          <%= form_tag add_to_cart_path do %>
+            <%= hidden_field_tag :product_id, product.id %>
+            <%= submit_tag "Add to Cart", class: "btn btn-primary bottombutton" %>
+          <% end %>
         </p>
       </div>
 		</div>
